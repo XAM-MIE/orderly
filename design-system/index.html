@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orderly Design System</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Sticky Nav -->
+  <nav class="ds-page-nav">
+    <span class="ds-nav-title">Orderly DS</span>
+    <a href="#colors">Colors</a>
+    <a href="#typography">Typography</a>
+    <a href="#buttons">Buttons</a>
+    <a href="#cards">Cards</a>
+    <a href="#inputs">Inputs</a>
+    <a href="#navigation">Navigation</a>
+    <a href="#status">Status</a>
+    <a href="#spacing">Spacing</a>
+    <a href="#elevation">Elevation</a>
+    <a href="#dark">Dark Mode</a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="ds-section" style="padding-bottom:0">
+    <div style="padding:64px 0 32px">
+      <p class="ds-small" style="color:var(--meta-blue);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:16px">Design System v1.0</p>
+      <h1 class="ds-display-1">Orderly Design System</h1>
+      <p class="ds-body" style="color:var(--text-body);max-width:60ch;margin-top:20px">
+        A Meta Store-inspired design system built on a binary surface strategy, pill-shaped CTAs, gallery-like whitespace, and a disciplined typographic hierarchy.
+      </p>
+    </div>
+  </section>
+
+  <!-- Colors -->
+  <section id="colors" class="ds-section-alt">
+    <div class="ds-section">
+      <div class="ds-section-header">
+        <h2>Color Palette</h2>
+        <p>A binary surface strategy: pure white for browsing and information, rich dark for immersive product moments. Meta Blue drives all primary actions.</p>
+      </div>
+
+      <h3 class="ds-heading-3" style="margin-bottom:24px">Primary</h3>
+      <div class="ds-color-grid" style="margin-bottom:48px">
+        <div class="ds-swatch">
+          <div class="ds-swatch-color" style="background:#0064E0"></div>
+          <div class="ds-swatch-info">
+            <div class="ds-swatch-name">Meta Blue</div>
+            <div class="ds-swatch-hex">#0064E0</div>
+            <div class="ds-swatch-role">Primary CTA, interactive links</div>
+          </div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-color" style="background:#0143B5"></div>
+          <div class="ds-swatch-info">
+            <div class="ds-swatch-name">Meta Blue Hover</div>
+            <div class="ds-swatch-hex">#0143B5</div>
+            <div class="ds-swatch-role">Button hover state</div>
+          </div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-color" style="background:#47A5FA"></div>
+          <div class="ds-swatch-info">
+            <div class="ds-swatch-name">Meta Blue Light</div>
+            <div class="ds-swatch-hex">#47A5FA</div>
+            <div class="ds-swatch-role">CTAs on dark backgrounds</div>
+          </div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-color" style="background:#1877F2"></div>
+          <div class="ds-swatch-info">
+            <div class="ds-swatch-name">Facebook Blue</div>
+            <div class="ds-swatch-hex">#1877F2</div>
+            <div class="ds-swatch-role">Legacy accent, badges</div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="ds-heading-3" style="margin-bottom:24px">Product Accents</h3>
+      <div class="ds-color-grid" style="margin-bottom:48px">
+        <div class="ds-swatch">
+          <div class="ds-swatch-color" style="background:#D6311F"></div>
+          <div class="ds-swatch-info">
+            <div class="ds-swatch-name">Ray-Ban Red</div>
+            <div class="ds-swatch-hex">#D6311F</div>
+            <div class="ds-swatch-role">Ray-Ban product sections</div>
+          </div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-color" style="background:#A121CE"></div>
+          <div class="ds-swatch-info">
+            <div class="ds-swatch-name">Oculus Purple</div>
+            <div class="ds-swatch-hex">#A121CE</div>
+            <div class="ds-swatch-role">Quest / VR content</div>
+          </div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-color" style="background:#6441D2"></div>
+          <div class="ds-swatch-info">
+            <div class="ds-swatch-name">Work Purple</div>
+            <div class="ds-swatch-hex">#6441D2</div>
+            <div class="ds-swatch-role">Enterprise / Work content</div>
+          </div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-color" style="background:#1B365D"></div>
+          <div class="ds-swatch-info">
+            <div class="ds-swatch-name">Portal Blue</div>
+            <div class="ds-swatch-hex">#1B365D</div>
+            <div class="ds-swatch-role">Deep navy accent</div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="ds-heading-3" style="margin-bottom:24px">Surfaces</h3>
+      <div class="ds-color-grid" style="margin-bottom:48px">
+        <div class="ds-swatch">
+          <div class="ds-swatch-color" style="background:#FFFFFF;border:1px solid var(--divider-gray)"></div>
+          <div class="ds-swatch-info">
+            <div class="ds-swatch-name">White</div>
+            <div class="ds-swatch-hex">#FFFFFF</div>
+            <div class="ds-swatch-role">Primary canvas</div>
+          </div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-color" style="background:#F1F4F7"></div>
+          <div class="ds-swatch-info">
+            <div class="ds-swatch-name">Soft Gray</div>
+            <div class="ds-swatch-hex">#F1F4F7</div>
+            <div class="ds-swatch-role">Secondary background</div>
+          </div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-color" style="background:#F7F8FA"></div>
+          <div class="ds-swatch-info">
+            <div class="ds-swatch-name">Warm Gray</div>
+            <div class="ds-swatch-hex">#F7F8FA</div>
+            <div class="ds-swatch-role">Flat card surfaces</div>
+          </div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-color" style="background:#E8F3FF"></div>
+          <div class="ds-swatch-info">
+            <div class="ds-swatch-name">Baby Blue</div>
+            <div class="ds-swatch-hex">#E8F3FF</div>
+            <div class="ds-swatch-role">Highlight background</div>
+          </div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-color" style="background:#1C1E21"></div>
+          <div class="ds-swatch-info">
+            <div class="ds-swatch-name">Near Black</div>
+            <div class="ds-swatch-hex">#1C1E21</div>
+            <div class="ds-swatch-role">Dark section backgrounds</div>
+          </div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-color" style="background:#181A1B"></div>
+          <div class="ds-swatch-info">
+            <div class="ds-swatch-name">Oculus Light</div>
+            <div class="ds-swatch-hex">#181A1B</div>
+            <div class="ds-swatch-role">Warm dark surface</div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="ds-heading-3" style="margin-bottom:24px">Text &amp; Dividers</h3>
+      <div class="ds-color-grid">
+        <div class="ds-swatch">
+          <div class="ds-swatch-color" style="background:#1C2B33"></div>
+          <div class="ds-swatch-info">
+            <div class="ds-swatch-name">Dark Charcoal</div>
+            <div class="ds-swatch-hex">#1C2B33</div>
+            <div class="ds-swatch-role">Primary text</div>
+          </div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-color" style="background:#5D6C7B"></div>
+          <div class="ds-swatch-info">
+            <div class="ds-swatch-name">Slate Gray</div>
+            <div class="ds-swatch-hex">#5D6C7B</div>
+            <div class="ds-swatch-role">Body text</div>
+          </div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-color" style="background:#65676B"></div>
+          <div class="ds-swatch-info">
+            <div class="ds-swatch-name">Secondary Text</div>
+            <div class="ds-swatch-hex">#65676B</div>
+            <div class="ds-swatch-role">Supporting copy</div>
+          </div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-color" style="background:#DEE3E9"></div>
+          <div class="ds-swatch-info">
+            <div class="ds-swatch-name">Divider Gray</div>
+            <div class="ds-swatch-hex">#DEE3E9</div>
+            <div class="ds-swatch-role">Content separators</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Typography -->
+  <section id="typography" class="ds-section">
+    <div class="ds-section-header">
+      <h2>Typography Scale</h2>
+      <p>Montserrat stands in for Optimistic VF. Weight 500 dominates headlines. Weight 300 at 28px adds editorial airiness. Negative tracking at small sizes keeps UI crisp.</p>
+    </div>
+
+    <div class="ds-type-row">
+      <div class="ds-type-label">Display 1</div>
+      <div class="ds-type-meta">64px / 500 / 1.16</div>
+      <div class="ds-type-sample"><span class="ds-display-1">Hero Headline</span></div>
+    </div>
+    <div class="ds-type-row">
+      <div class="ds-type-label">Display 2</div>
+      <div class="ds-type-meta">48px / 500 / 1.17</div>
+      <div class="ds-type-sample"><span class="ds-display-2">Section Hero</span></div>
+    </div>
+    <div class="ds-type-row">
+      <div class="ds-type-label">Heading 1</div>
+      <div class="ds-type-meta">36px / 500 / 1.28</div>
+      <div class="ds-type-sample"><span class="ds-heading-1">Major Section Heading</span></div>
+    </div>
+    <div class="ds-type-row">
+      <div class="ds-type-label">Heading 2</div>
+      <div class="ds-type-meta">28px / 300 / 1.21</div>
+      <div class="ds-type-sample"><span class="ds-heading-2">Light Subheading for Editorial Air</span></div>
+    </div>
+    <div class="ds-type-row">
+      <div class="ds-type-label">Heading 3</div>
+      <div class="ds-type-meta">18px / 700 / 1.44</div>
+      <div class="ds-type-sample"><span class="ds-heading-3">Card Title, Bold Callout</span></div>
+    </div>
+    <div class="ds-type-row">
+      <div class="ds-type-label">Body</div>
+      <div class="ds-type-meta">18px / 400 / 1.44</div>
+      <div class="ds-type-sample"><span class="ds-body">Product descriptions and body copy set in regular weight at 18px for generous, scannable reading.</span></div>
+    </div>
+    <div class="ds-type-row">
+      <div class="ds-type-label">Body Compact</div>
+      <div class="ds-type-meta">16px / 500 / 1.50 / -0.16px</div>
+      <div class="ds-type-sample"><span class="ds-body-compact">Navigation Links, UI Labels</span></div>
+    </div>
+    <div class="ds-type-row">
+      <div class="ds-type-label">Caption Bold</div>
+      <div class="ds-type-meta">14px / 700 / 1.43</div>
+      <div class="ds-type-sample"><span class="ds-caption-bold">Emphasized Labels, Price $299</span></div>
+    </div>
+    <div class="ds-type-row">
+      <div class="ds-type-label">Caption</div>
+      <div class="ds-type-meta">14px / 400 / 1.43 / -0.14px</div>
+      <div class="ds-type-sample"><span class="ds-caption">Secondary labels, metadata, supporting info</span></div>
+    </div>
+    <div class="ds-type-row">
+      <div class="ds-type-label">Small</div>
+      <div class="ds-type-meta">12px / 400 / 1.33</div>
+      <div class="ds-type-sample"><span class="ds-small">Footer links, legal text, timestamps</span></div>
+    </div>
+    <div class="ds-type-row">
+      <div class="ds-type-label">Button</div>
+      <div class="ds-type-meta">14px / 400 / 1.43 / -0.14px</div>
+      <div class="ds-type-sample"><span class="ds-button-text" style="padding:10px 22px;background:var(--meta-blue);color:white;border-radius:100px">Shop Now</span></div>
+    </div>
+  </section>
+
+  <!-- Buttons -->
+  <section id="buttons" class="ds-section-alt">
+    <div class="ds-section">
+      <div class="ds-section-header">
+        <h2>Buttons</h2>
+        <p>Pill-shaped CTAs in saturated blue. Every primary action is unmistakable. Secondary actions recede. Ghost links stay minimal.</p>
+      </div>
+
+      <h3 class="ds-heading-3" style="margin-bottom:24px">Variants</h3>
+      <div class="ds-btn-row" style="margin-bottom:48px">
+        <button class="ds-btn ds-btn-primary">Shop Now</button>
+        <button class="ds-btn ds-btn-secondary">Learn More</button>
+        <button class="ds-btn ds-btn-ghost">Sign In</button>
+        <button class="ds-btn ds-btn-disabled" aria-disabled="true">Coming Soon</button>
+      </div>
+
+      <h3 class="ds-heading-3" style="margin-bottom:24px">Sizes</h3>
+      <div class="ds-btn-row" style="margin-bottom:48px">
+        <button class="ds-btn ds-btn-primary ds-btn-lg">Large Button</button>
+        <button class="ds-btn ds-btn-primary">Default Button</button>
+        <button class="ds-btn ds-btn-primary ds-btn-sm">Small</button>
+      </div>
+
+      <h3 class="ds-heading-3" style="margin-bottom:24px">On Dark Background</h3>
+      <div class="ds-btn-row ds-btn-dark" style="background:var(--near-black);padding:32px;border-radius:var(--radius-card)">
+        <button class="ds-btn ds-btn-primary" style="background:var(--meta-blue-light)">Shop Now</button>
+        <button class="ds-btn ds-btn-secondary" style="color:rgba(255,255,255,0.7);border-color:rgba(255,255,255,0.2)">Learn More</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cards -->
+  <section id="cards" class="ds-section">
+    <div class="ds-section-header">
+      <h2>Cards</h2>
+      <p>20px rounded corners, white backgrounds, edge-to-edge imagery. Hover lifts with dual-shadow elevation. Product cards use full-bleed photos with text overlay on dark gradient.</p>
+    </div>
+
+    <h3 class="ds-heading-3" style="margin-bottom:24px">Product Cards (Elevated)</h3>
+    <div class="ds-card-grid" style="margin-bottom:64px">
+      <div class="ds-card ds-card-elevated">
+        <div class="img-placeholder">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+        </div>
+        <div class="ds-card-body">
+          <h3>Quest 3S</h3>
+          <p>Most popular VR headset. Mixed reality experiences starting at $299.</p>
+          <div class="ds-card-price">$299 USD</div>
+        </div>
+      </div>
+      <div class="ds-card ds-card-elevated">
+        <div class="img-placeholder">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+        </div>
+        <div class="ds-card-body">
+          <h3>Ray-Ban Meta</h3>
+          <p>Smart glasses with built-in camera, open-ear speakers, and Meta AI.</p>
+          <div class="ds-card-price">$299 USD</div>
+        </div>
+      </div>
+      <div class="ds-card ds-card-elevated">
+        <div class="img-placeholder">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+        </div>
+        <div class="ds-card-body">
+          <h3>Quest 3</h3>
+          <p>Premium mixed reality. Higher resolution display and wider field of view.</p>
+          <div class="ds-card-price">$499 USD</div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="ds-heading-3" style="margin-bottom:24px">Flat Cards</h3>
+    <div class="ds-card-grid" style="margin-bottom:64px">
+      <div class="ds-card ds-card-flat">
+        <div class="ds-card-body">
+          <h3>Free Shipping</h3>
+          <p>On all orders over $50. No hidden fees, no surprises at checkout.</p>
+        </div>
+      </div>
+      <div class="ds-card ds-card-flat">
+        <div class="ds-card-body">
+          <h3>30-Day Returns</h3>
+          <p>Try it risk-free. Full refund within 30 days of delivery.</p>
+        </div>
+      </div>
+      <div class="ds-card ds-card-flat">
+        <div class="ds-card-body">
+          <h3>2-Year Warranty</h3>
+          <p>Covered against defects. Extended protection plans available.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="ds-heading-3" style="margin-bottom:24px">Hero Card (Cinematic)</h3>
+    <div class="ds-card-hero" style="max-width:100%">
+      <div class="ds-card-hero-image">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+      </div>
+      <div class="ds-card-hero-overlay">
+        <h2>Mixed Reality Starts Here</h2>
+        <p>The most advanced Quest headset yet. Explore immersive worlds, collaborate in 3D, and experience entertainment like never before.</p>
+        <div style="margin-top:24px">
+          <button class="ds-btn ds-btn-primary" style="background:var(--meta-blue-light)">Explore Quest</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Inputs -->
+  <section id="inputs" class="ds-section-alt">
+    <div class="ds-section">
+      <div class="ds-section-header">
+        <h2>Inputs &amp; Forms</h2>
+        <p>8px border radius, 16px font size, subtle focus ring in Meta Blue. Error states shift border and helper text to red.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:48px">
+        <div>
+          <div class="ds-input-group">
+            <label class="ds-input-label">Full Name</label>
+            <input type="text" class="ds-input" placeholder="Enter your full name">
+            <span class="ds-input-helper">As it appears on your ID</span>
+          </div>
+
+          <div class="ds-input-group">
+            <label class="ds-input-label">Email Address</label>
+            <input type="email" class="ds-input" placeholder="you@example.com">
+          </div>
+
+          <div class="ds-input-group">
+            <label class="ds-input-label">Shipping Address</label>
+            <input type="text" class="ds-input" value="123 Main St, Apt 4B">
+          </div>
+        </div>
+
+        <div>
+          <div class="ds-input-group">
+            <label class="ds-input-label" style="color:hsl(350, 87%, 55%)">Email Address</label>
+            <input type="email" class="ds-input ds-input-error" value="invalid-email">
+            <span class="ds-input-error-text">Please enter a valid email address</span>
+          </div>
+
+          <div class="ds-input-group">
+            <label class="ds-input-label">Phone Number</label>
+            <input type="tel" class="ds-input ds-input-disabled" value="+1 (555) 000-0000" disabled>
+            <span class="ds-input-helper">Phone number cannot be changed</span>
+          </div>
+
+          <div class="ds-input-group">
+            <label class="ds-input-label">Search Products</label>
+            <input type="search" class="ds-input" placeholder="Search headsets, glasses, accessories...">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Navigation -->
+  <section id="navigation" class="ds-section">
+    <div class="ds-section-header">
+      <h2>Navigation Bar</h2>
+      <p>56px height, frosted glass background, left-aligned logo, horizontal links at 16px/500, right-aligned pill CTA. Collapses to hamburger on mobile.</p>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:32px">
+      <div>
+        <p class="ds-caption" style="color:var(--text-secondary);margin-bottom:12px">Light Surface</p>
+        <div class="ds-nav-demo">
+          <span class="ds-nav-logo">Meta</span>
+          <ul class="ds-nav-links">
+            <li><a href="#">VR Headsets</a></li>
+            <li><a href="#">Smart Glasses</a></li>
+            <li><a href="#">Accessories</a></li>
+            <li><a href="#">Support</a></li>
+          </ul>
+          <div class="ds-nav-cta">
+            <button class="ds-btn ds-btn-primary">Shop All</button>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <p class="ds-caption" style="color:var(--text-secondary);margin-bottom:12px">Frosted Glass</p>
+        <div class="ds-nav-demo" style="background:rgba(241,244,247,0.8);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)">
+          <span class="ds-nav-logo">Meta</span>
+          <ul class="ds-nav-links">
+            <li><a href="#">VR Headsets</a></li>
+            <li><a href="#">Smart Glasses</a></li>
+            <li><a href="#">Accessories</a></li>
+            <li><a href="#">Support</a></li>
+          </ul>
+          <div class="ds-nav-cta">
+            <button class="ds-btn ds-btn-primary">Shop All</button>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <p class="ds-caption" style="color:var(--text-secondary);margin-bottom:12px">Dark Surface</p>
+        <div class="ds-nav-demo" style="background:var(--near-black);border-color:rgba(255,255,255,0.1)">
+          <span class="ds-nav-logo" style="color:white">Meta</span>
+          <ul class="ds-nav-links">
+            <li><a href="#" style="color:rgba(255,255,255,0.85)">VR Headsets</a></li>
+            <li><a href="#" style="color:rgba(255,255,255,0.85)">Smart Glasses</a></li>
+            <li><a href="#" style="color:rgba(255,255,255,0.85)">Accessories</a></li>
+            <li><a href="#" style="color:rgba(255,255,255,0.85)">Support</a></li>
+          </ul>
+          <div class="ds-nav-cta">
+            <button class="ds-btn ds-btn-primary" style="background:var(--meta-blue-light)">Shop All</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Status / Semantic -->
+  <section id="status" class="ds-section-alt">
+    <div class="ds-section">
+      <div class="ds-section-header">
+        <h2>Semantic Status</h2>
+        <p>Consistent status communication using tinted backgrounds with matching dot indicators. Used for badges, notifications, and inline status labels.</p>
+      </div>
+
+      <div class="ds-status-grid" style="margin-bottom:48px">
+        <span class="ds-status-badge ds-badge-success">Order Confirmed</span>
+        <span class="ds-status-badge ds-badge-error">Payment Failed</span>
+        <span class="ds-status-badge ds-badge-warning">Low Stock</span>
+        <span class="ds-status-badge ds-badge-info">Processing</span>
+      </div>
+
+      <h3 class="ds-heading-3" style="margin-bottom:24px">Background Tints</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px">
+        <div style="background:var(--positive-bg);border-radius:var(--radius-card);padding:24px">
+          <span class="ds-caption-bold" style="color:var(--success-store)">Success Background</span>
+          <p class="ds-small" style="color:var(--success);margin-top:4px">rgba(36, 228, 0, 0.15)</p>
+        </div>
+        <div style="background:var(--error-bg);border-radius:var(--radius-card);padding:24px">
+          <span class="ds-caption-bold" style="color:var(--error-store)">Error Background</span>
+          <p class="ds-small" style="color:var(--error);margin-top:4px">rgba(255, 123, 145, 0.15)</p>
+        </div>
+        <div style="background:var(--warning-bg);border-radius:var(--radius-card);padding:24px">
+          <span class="ds-caption-bold" style="color:#9a6d00">Warning Background</span>
+          <p class="ds-small" style="color:var(--warning);margin-top:4px">rgba(255, 226, 0, 0.15)</p>
+        </div>
+        <div style="background:var(--info-bg);border-radius:var(--radius-card);padding:24px">
+          <span class="ds-caption-bold" style="color:#0054b4">Info Background</span>
+          <p class="ds-small" style="color:var(--meta-blue);margin-top:4px">rgba(0, 145, 255, 0.15)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Spacing -->
+  <section id="spacing" class="ds-section">
+    <div class="ds-section-header">
+      <h2>Spacing System</h2>
+      <p>8px base unit. Vertical rhythm is disciplined and consistent. Section padding at 64-80px conveys premium, gallery-like spacing.</p>
+    </div>
+
+    <div class="ds-spacing-grid">
+      <div class="ds-spacing-row">
+        <span class="ds-spacing-label">Hairline</span>
+        <span class="ds-spacing-token">space-1 / 1px</span>
+        <div class="ds-spacing-bar" style="width:1px"></div>
+      </div>
+      <div class="ds-spacing-row">
+        <span class="ds-spacing-label">Tight</span>
+        <span class="ds-spacing-token">space-2 / 4px</span>
+        <div class="ds-spacing-bar" style="width:4px"></div>
+      </div>
+      <div class="ds-spacing-row">
+        <span class="ds-spacing-label">Base</span>
+        <span class="ds-spacing-token">space-3 / 8px</span>
+        <div class="ds-spacing-bar" style="width:8px"></div>
+      </div>
+      <div class="ds-spacing-row">
+        <span class="ds-spacing-label">Card H-Pad</span>
+        <span class="ds-spacing-token">space-4 / 10px</span>
+        <div class="ds-spacing-bar" style="width:10px"></div>
+      </div>
+      <div class="ds-spacing-row">
+        <span class="ds-spacing-label">Button Icon</span>
+        <span class="ds-spacing-token">space-5 / 12px</span>
+        <div class="ds-spacing-bar" style="width:12px"></div>
+      </div>
+      <div class="ds-spacing-row">
+        <span class="ds-spacing-label">Caption</span>
+        <span class="ds-spacing-token">space-6 / 14px</span>
+        <div class="ds-spacing-bar" style="width:14px"></div>
+      </div>
+      <div class="ds-spacing-row">
+        <span class="ds-spacing-label">Paragraph</span>
+        <span class="ds-spacing-token">space-7 / 16px</span>
+        <div class="ds-spacing-bar" style="width:16px"></div>
+      </div>
+      <div class="ds-spacing-row">
+        <span class="ds-spacing-label">Body Rhythm</span>
+        <span class="ds-spacing-token">space-8 / 18px</span>
+        <div class="ds-spacing-bar" style="width:18px"></div>
+      </div>
+      <div class="ds-spacing-row">
+        <span class="ds-spacing-label">Grid Gap</span>
+        <span class="ds-spacing-token">space-9 / 24px</span>
+        <div class="ds-spacing-bar" style="width:24px"></div>
+      </div>
+      <div class="ds-spacing-row">
+        <span class="ds-spacing-label">Content Pad</span>
+        <span class="ds-spacing-token">space-10 / 32px</span>
+        <div class="ds-spacing-bar" style="width:32px"></div>
+      </div>
+      <div class="ds-spacing-row">
+        <span class="ds-spacing-label">Block Space</span>
+        <span class="ds-spacing-token">space-11 / 40px</span>
+        <div class="ds-spacing-bar" style="width:40px"></div>
+      </div>
+      <div class="ds-spacing-row">
+        <span class="ds-spacing-label">Section Compact</span>
+        <span class="ds-spacing-token">space-12 / 48px</span>
+        <div class="ds-spacing-bar" style="width:48px"></div>
+      </div>
+      <div class="ds-spacing-row">
+        <span class="ds-spacing-label">Section Standard</span>
+        <span class="ds-spacing-token">space-13 / 64px</span>
+        <div class="ds-spacing-bar" style="width:64px"></div>
+      </div>
+      <div class="ds-spacing-row">
+        <span class="ds-spacing-label">Hero Section</span>
+        <span class="ds-spacing-token">space-14 / 80px</span>
+        <div class="ds-spacing-bar" style="width:80px"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Elevation -->
+  <section id="elevation" class="ds-section-alt">
+    <div class="ds-section">
+      <div class="ds-section-header">
+        <h2>Elevation &amp; Depth</h2>
+        <p>Primarily flat. Surface differentiation via background color shifts. When shadows appear, they use the dual-shadow pattern: large ambient + small direct light.</p>
+      </div>
+
+      <div class="ds-elevation-grid">
+        <div class="ds-elevation-card" style="background:var(--warm-gray);box-shadow:none">
+          <div style="text-align:center">
+            <div class="ds-caption-bold">Flat</div>
+            <div class="ds-small" style="margin-top:4px">No shadow</div>
+          </div>
+        </div>
+        <div class="ds-elevation-card" style="box-shadow:var(--shadow-l1)">
+          <div style="text-align:center">
+            <div class="ds-caption-bold">Level 1</div>
+            <div class="ds-small" style="margin-top:4px">Subtle lift</div>
+          </div>
+        </div>
+        <div class="ds-elevation-card" style="box-shadow:var(--shadow-l2)">
+          <div style="text-align:center">
+            <div class="ds-caption-bold">Level 2</div>
+            <div class="ds-small" style="margin-top:4px">Elevated</div>
+          </div>
+        </div>
+        <div class="ds-elevation-card" style="background:var(--warm-gray);box-shadow:inset 0 2px 4px rgba(255,255,255,0.5)">
+          <div style="text-align:center">
+            <div class="ds-caption-bold">Inset</div>
+            <div class="ds-small" style="margin-top:4px">Inner glow</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:48px;padding:48px;background:var(--near-black);border-radius:var(--radius-card);position:relative;overflow:hidden">
+        <div style="position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.6))"></div>
+        <div style="position:relative;z-index:1">
+          <div class="ds-caption" style="color:var(--text-secondary);margin-bottom:8px">Overlay Level</div>
+          <div class="ds-heading-1" style="color:white">Dark Overlay Gradient</div>
+          <p class="ds-body" style="color:var(--text-secondary);margin-top:8px;max-width:50ch">rgba(0,0,0,0.6) backdrop applied over dark product photography for text legibility.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dark Section Demo -->
+  <section id="dark" class="ds-section-dark">
+    <div class="ds-section" style="max-width:1440px;margin:0 auto;padding:80px 40px">
+      <div class="ds-section-header">
+        <h2 style="color:white">Dark Surface Components</h2>
+        <p style="color:var(--text-secondary)">Near Black (#1C1E21) and Oculus Light (#181A1B) create immersive product moments. Meta Blue Light (#47A5FA) replaces Meta Blue for CTAs on dark backgrounds.</p>
+      </div>
+
+      <div class="ds-card-grid" style="margin-bottom:48px">
+        <div class="ds-card" style="background:var(--oculus-light)">
+          <div style="width:100%;aspect-ratio:4/3;background:linear-gradient(135deg,#181A1B,#1C1E21);display:flex;align-items:center;justify-content:center">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#465A69" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+          </div>
+          <div class="ds-card-body">
+            <h3 style="color:white">Quest 3 Headset</h3>
+            <p style="color:var(--text-secondary)">Step into mixed reality with the most advanced headset.</p>
+            <div style="margin-top:16px">
+              <button class="ds-btn ds-btn-primary" style="background:var(--meta-blue-light)">Buy Now</button>
+            </div>
+          </div>
+        </div>
+        <div class="ds-card" style="background:var(--oculus-light)">
+          <div style="width:100%;aspect-ratio:4/3;background:linear-gradient(135deg,#181A1B,#1C1E21);display:flex;align-items:center;justify-content:center">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#465A69" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+          </div>
+          <div class="ds-card-body">
+            <h3 style="color:white">Ray-Ban Meta Glasses</h3>
+            <p style="color:var(--text-secondary)">Capture, share, and listen with iconic style.</p>
+            <div style="margin-top:16px">
+              <button class="ds-btn ds-btn-primary" style="background:var(--meta-blue-light)">Buy Now</button>
+            </div>
+          </div>
+        </div>
+        <div class="ds-card" style="background:var(--oculus-light)">
+          <div style="width:100%;aspect-ratio:4/3;background:linear-gradient(135deg,#181A1B,#1C1E21);display:flex;align-items:center;justify-content:center">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#465A69" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+          </div>
+          <div class="ds-card-body">
+            <h3 style="color:white">Meta Quest Plus</h3>
+            <p style="color:var(--text-secondary)">Unlock the best VR and MR experiences monthly.</p>
+            <div style="margin-top:16px">
+              <button class="ds-btn ds-btn-secondary" style="color:rgba(255,255,255,0.7);border-color:rgba(255,255,255,0.2)">Learn More</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align:center;padding:64px 0 32px">
+        <p class="ds-small" style="color:var(--text-secondary);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:16px">Design System v1.0</p>
+        <h2 class="ds-display-2" style="color:white">Built for Orderly</h2>
+        <p class="ds-body" style="color:var(--text-secondary);max-width:50ch;margin:16px auto 0">A gallery-like design system with ruthless visual hierarchy, pill-shaped CTAs, and a binary surface strategy.</p>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
