@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orderly — Checkout</title>
+  <meta name="description" content="Review your cart and complete your order.">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .checkout-layout { display: grid; grid-template-columns: 1fr 400px; gap: var(--space-8); padding: var(--space-9) 0 var(--space-11); align-items: start; }
+    .checkout-section { margin-bottom: var(--space-7); }
+    .checkout-title { font-family: var(--font-display); font-size: 20px; font-weight: 600; letter-spacing: -0.4px; margin-bottom: var(--space-5); color: var(--color-near-black); }
+    .checkout-card { background: var(--color-white); border-radius: var(--radius-lg); box-shadow: var(--shadow-ring); padding: var(--space-6); }
+    .cart-line { display: flex; align-items: center; justify-content: space-between; padding: var(--space-4) 0; border-bottom: 1px solid var(--color-input-border); }
+    .cart-line:last-child { border-bottom: none; }
+    .cart-line-left { display: flex; align-items: center; gap: var(--space-3); }
+    .cart-line-img { width: 56px; height: 56px; border-radius: var(--radius-sm); background: linear-gradient(135deg, var(--color-surface-soft), var(--color-input-border)); flex-shrink: 0; }
+    .cart-line-name { font-family: var(--font-display); font-size: 15px; font-weight: 600; }
+    .cart-line-detail { font-family: var(--font-body); font-size: 13px; color: var(--color-slate); }
+    .cart-line-price { font-family: var(--font-display); font-size: 15px; font-weight: 600; }
+    .promo-row { display: flex; gap: var(--space-3); }
+    .promo-row .input { flex: 1; }
+    .summary-row { display: flex; justify-content: space-between; padding: 8px 0; font-family: var(--font-body); font-size: 15px; color: var(--color-slate); }
+    .summary-row.total { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--color-near-black); padding-top: var(--space-4); margin-top: var(--space-2); border-top: 1px solid var(--color-input-border); }
+    .payment-option { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border: 1px solid var(--color-input-border); border-radius: var(--radius-sm); cursor: pointer; transition: all var(--duration-fast) var(--ease-smooth); margin-bottom: 8px; }
+    .payment-option:hover { border-color: var(--color-border); }
+    .payment-option.selected { border-color: var(--color-blue-450); background: rgba(91,118,254,0.04); }
+    .payment-radio { width: 20px; height: 20px; border-radius: var(--radius-circle); border: 2px solid var(--color-border); flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+    .payment-option.selected .payment-radio { border-color: var(--color-blue-450); }
+    .payment-option.selected .payment-radio::after { content: ''; width: 10px; height: 10px; border-radius: var(--radius-circle); background: var(--color-blue-450); }
+    .payment-label { font-family: var(--font-display); font-size: 15px; font-weight: 500; }
+    .payment-desc { font-family: var(--font-body); font-size: 13px; color: var(--color-slate); }
+    @media (max-width: 1024px) { .checkout-layout { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <nav class="topnav">
+    <a href="homepage.html" class="topnav-logo">orderly</a>
+    <div class="topnav-right"><div class="avatar">AZ</div></div>
+  </nav>
+
+  <div class="container" style="max-width:1100px;">
+    <div style="padding:var(--space-8) 0 var(--space-4);"><p class="text-eyebrow mb-3">Checkout</p><h1 class="display-section animate-fade-up" style="font-size:36px;">Review &amp; Pay</h1></div>
+
+    <div class="checkout-layout">
+      <div>
+        <!-- CART ITEMS -->
+        <div class="checkout-section">
+          <h2 class="checkout-title">Your Cart</h2>
+          <div class="checkout-card">
+            <div class="flex items-center gap-2 mb-4" style="padding-bottom:var(--space-3);border-bottom:1px solid var(--color-input-border);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3z"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+              <span class="text-feature" style="font-size:15px;">Campus Grill</span>
+            </div>
+            <div class="cart-line"><div class="cart-line-left"><div class="cart-line-img"></div><div><p class="cart-line-name">Smoky BBQ Burger</p><p class="cart-line-detail">Large, Extra cheese</p></div></div><div class="flex items-center gap-3"><div class="qty" style="transform:scale(0.85);"><button class="qty-btn">&minus;</button><span class="qty-value">1</span><button class="qty-btn">+</button></div><span class="cart-line-price">N2,800</span></div></div>
+            <div class="cart-line"><div class="cart-line-left"><div class="cart-line-img"></div><div><p class="cart-line-name">Loaded Fries</p><p class="cart-line-detail">Regular</p></div></div><div class="flex items-center gap-3"><div class="qty" style="transform:scale(0.85);"><button class="qty-btn">&minus;</button><span class="qty-value">1</span><button class="qty-btn">+</button></div><span class="cart-line-price">N1,200</span></div></div>
+          </div>
+        </div>
+
+        <!-- DELIVERY -->
+        <div class="checkout-section">
+          <h2 class="checkout-title">Delivery Address</h2>
+          <div class="checkout-card">
+            <div class="flex items-center gap-3 mb-4">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <div><p class="text-feature" style="font-size:15px;">Hall 3, Room 214</p><p class="text-small" style="color:var(--color-slate);">University of Lagos, Akoka, Yaba</p></div>
+              <button class="btn btn-ghost btn-sm" style="margin-left:auto;">Change</button>
+            </div>
+            <div class="input-group"><label class="input-label">Delivery Instructions (optional)</label><textarea class="input" placeholder="Ring the bell, leave at door, etc." style="min-height:60px;"></textarea></div>
+          </div>
+        </div>
+
+        <!-- PAYMENT -->
+        <div class="checkout-section">
+          <h2 class="checkout-title">Payment Method</h2>
+          <div class="payment-option selected">
+            <div class="payment-radio"></div>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            <div><p class="payment-label">Debit Card</p><p class="payment-desc">**** 4521</p></div>
+          </div>
+          <div class="payment-option">
+            <div class="payment-radio"></div>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 12h12M6 16h4"/></svg>
+            <div><p class="payment-label">Bank Transfer</p><p class="payment-desc">Pay via bank app</p></div>
+          </div>
+          <div class="payment-option">
+            <div class="payment-radio"></div>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+            <div><p class="payment-label">Cash on Delivery</p><p class="payment-desc">Pay when your order arrives</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUMMARY SIDEBAR -->
+      <div>
+        <div class="checkout-card" style="position:sticky;top:88px;">
+          <h3 class="checkout-title" style="font-size:18px;">Order Summary</h3>
+          <div class="summary-row"><span>Subtotal</span><span>N4,000</span></div>
+          <div class="summary-row"><span>Delivery Fee</span><span>N200</span></div>
+          <div class="summary-row"><span>Service Fee</span><span>N50</span></div>
+
+          <div style="margin:var(--space-4) 0;">
+            <p class="input-label mb-2">Promo Code</p>
+            <div class="promo-row"><input type="text" class="input" placeholder="Enter code"><button class="btn btn-outlined btn-sm">Apply</button></div>
+          </div>
+
+          <div class="summary-row total"><span>Total</span><span>N4,250</span></div>
+          <button class="btn btn-primary btn-full mt-5" style="font-size:16px;padding:16px;">Place Order</button>
+          <p class="text-small mt-3 text-center" style="color:var(--color-placeholder);">By placing this order you agree to our Terms of Service</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="bottomnav"><div class="bottomnav-inner">
+    <a href="homepage.html" class="bottomnav-item" style="text-decoration:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home</a>
+    <div class="bottomnav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Explore</div>
+    <div class="bottomnav-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Cart</div>
+    <div class="bottomnav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>Orders</div>
+    <div class="bottomnav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Account</div>
+  </div></nav>
+</body>
+</html>

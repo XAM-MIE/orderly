@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orderly — Explore Vendors</title>
+  <meta name="description" content="Browse and search all vendors near your campus.">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .explore-layout { display: grid; grid-template-columns: 260px 1fr; gap: var(--space-7); align-items: start; padding: var(--space-9) 0; }
+    .filter-sidebar { position: sticky; top: 88px; display: flex; flex-direction: column; gap: var(--space-6); }
+    .filter-group { display: flex; flex-direction: column; gap: var(--space-3); }
+    .filter-title { font-family: var(--font-display); font-size: 14px; font-weight: 600; color: var(--color-near-black); text-transform: uppercase; letter-spacing: 0.5px; }
+    .filter-chip-row { display: flex; flex-wrap: wrap; gap: 6px; }
+    .filter-chip { font-family: var(--font-display); font-size: 13px; font-weight: 500; padding: 6px 12px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); cursor: pointer; transition: all var(--duration-fast) var(--ease-smooth); background: transparent; color: var(--color-near-black); }
+    .filter-chip.active { background-color: var(--color-blue-450); border-color: var(--color-blue-450); color: white; }
+    .filter-chip:hover:not(.active) { border-color: var(--color-near-black); }
+    .results-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-5); }
+    .results-count { font-family: var(--font-body); font-size: 15px; color: var(--color-slate); }
+    .map-toggle-bar { display: flex; align-items: center; justify-content: space-between; padding: var(--space-3) var(--space-4); background-color: var(--color-surface-soft); border-radius: var(--radius-sm); margin-bottom: var(--space-5); }
+    .vendor-result-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-5); }
+    @media (max-width: 1024px) { .explore-layout { grid-template-columns: 1fr; } .filter-sidebar { display: none; } }
+    @media (max-width: 768px) { .vendor-result-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <nav class="topnav">
+    <a href="homepage.html" class="topnav-logo">orderly</a>
+    <div class="topnav-center">
+      <input type="text" class="input input-search" placeholder="Search restaurants, dishes, cuisines..." style="height:42px;font-size:14px;">
+      <span class="location-pill">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        UNILAG
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </span>
+    </div>
+    <div class="topnav-right">
+      <div class="topnav-cart"><button class="btn-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></button><span class="cart-count">3</span></div>
+      <div class="avatar">AZ</div>
+    </div>
+  </nav>
+
+  <div class="container container-wide">
+    <!-- SEARCH HERO -->
+    <section style="padding:var(--space-11) 0 var(--space-6);text-align:center;">
+      <h1 class="display-section mb-5 animate-fade-up">Explore Vendors</h1>
+      <div style="max-width:600px;margin:0 auto;" class="animate-fade-up delay-1">
+        <input type="text" class="input input-search" placeholder="What are you craving?" style="font-size:17px;padding:16px 16px 16px 48px;">
+      </div>
+      <div class="scroll-row mt-5 animate-fade-up delay-2" style="justify-content:center;">
+        <span class="chip active">All</span>
+        <span class="chip"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M8 8h8M10 16h4"/></svg></span> Burgers</span>
+        <span class="chip"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"/><path d="M8 14l4-8 4 8"/></svg></span> Pizza</span>
+        <span class="chip"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 8h1a4 4 0 010 8h-1"/><path d="M3 8h14v9a4 4 0 01-4 4H7a4 4 0 01-4-4V8z"/></svg></span> Coffee</span>
+        <span class="chip"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22c5.5 0 10-4.5 10-10S17.5 2 12 2 2 6.5 2 12s4.5 10 10 10z"/><path d="M8 12l3 3 5-5"/></svg></span> Healthy</span>
+        <span class="chip"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 11h18M5 11V7a7 7 0 0114 0v4"/><rect x="3" y="11" width="18" height="4" rx="1"/></svg></span> African</span>
+      </div>
+    </section>
+
+    <div class="explore-layout">
+      <!-- SIDEBAR FILTERS -->
+      <aside class="filter-sidebar">
+        <div class="filter-group">
+          <p class="filter-title">Sort By</p>
+          <select class="input" style="padding:10px 14px;font-size:14px;"><option>Relevance</option><option>Rating</option><option>Delivery Time</option><option>Price: Low-High</option></select>
+        </div>
+        <div class="divider" style="margin:8px 0;"></div>
+        <div class="filter-group">
+          <p class="filter-title">Price Range</p>
+          <div class="filter-chip-row"><span class="filter-chip active">N</span><span class="filter-chip">NN</span><span class="filter-chip">NNN</span><span class="filter-chip">NNNN</span></div>
+        </div>
+        <div class="filter-group">
+          <p class="filter-title">Dietary</p>
+          <label class="filter-option"><div class="filter-checkbox checked"></div>Vegetarian</label>
+          <label class="filter-option"><div class="filter-checkbox"></div>Vegan</label>
+          <label class="filter-option"><div class="filter-checkbox"></div>Halal</label>
+          <label class="filter-option"><div class="filter-checkbox"></div>Gluten-Free</label>
+        </div>
+        <div class="filter-group">
+          <p class="filter-title">Delivery Time</p>
+          <div class="filter-chip-row"><span class="filter-chip active">Any</span><span class="filter-chip">&lt; 15 min</span><span class="filter-chip">&lt; 30 min</span></div>
+        </div>
+        <div class="filter-group">
+          <p class="filter-title">Offers</p>
+          <label class="filter-option"><div class="filter-checkbox"></div>Free Delivery</label>
+          <label class="filter-option"><div class="filter-checkbox checked"></div>Deals</label>
+          <label class="filter-option"><div class="filter-checkbox"></div>New Only</label>
+        </div>
+        <div class="filter-group">
+          <p class="filter-title">Min Rating</p>
+          <div class="filter-chip-row"><span class="filter-chip">3+</span><span class="filter-chip active">4+</span><span class="filter-chip">4.5+</span></div>
+        </div>
+      </aside>
+
+      <!-- RESULTS -->
+      <div>
+        <div class="map-toggle-bar">
+          <span class="text-body-standard" style="font-weight:500;display:flex;align-items:center;gap:8px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Show vendors on map
+          </span>
+          <button class="btn btn-outlined btn-sm">Toggle Map</button>
+        </div>
+        <div class="results-header">
+          <span class="results-count">Showing <strong>24</strong> vendors near UNILAG</span>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span class="text-small">Sort:</span>
+            <select style="font-family:var(--font-display);font-size:14px;padding:6px 12px;border:1px solid var(--color-input-border);border-radius:var(--radius-sm);background:var(--color-white);cursor:pointer;outline:none;"><option>Relevance</option><option>Rating</option></select>
+          </div>
+        </div>
+        <div class="vendor-result-grid">
+          <div class="card"><div class="placeholder-img">Food photo</div><div class="card-body">
+            <span class="badge badge-promo mb-2">30% OFF</span><h3 class="card-title">Campus Grill</h3>
+            <div class="rating-row mt-1 mb-2"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="rating-value">4.8</span><span class="rating-count">(245)</span></div>
+            <div class="flex items-center gap-3"><span class="text-caption"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 15-20 min</span><span class="text-caption"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> N200</span></div>
+            <div class="flex gap-2 mt-3"><span class="chip" style="padding:4px 10px;font-size:12px;">Burgers</span><span class="chip" style="padding:4px 10px;font-size:12px;">Grills</span></div>
+          </div></div>
+          <div class="card"><div class="placeholder-img">Food photo</div><div class="card-body">
+            <span class="badge badge-new mb-2">New</span><h3 class="card-title">Mama's Kitchen</h3>
+            <div class="rating-row mt-1 mb-2"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="rating-value">4.5</span><span class="rating-count">(189)</span></div>
+            <div class="flex items-center gap-3"><span class="text-caption"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 20-30 min</span><span class="text-caption"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Free</span></div>
+            <div class="flex gap-2 mt-3"><span class="chip" style="padding:4px 10px;font-size:12px;">African</span><span class="chip" style="padding:4px 10px;font-size:12px;">Rice</span></div>
+          </div></div>
+          <div class="card"><div class="placeholder-img">Food photo</div><div class="card-body">
+            <h3 class="card-title">Pizza Palace</h3>
+            <div class="rating-row mt-1 mb-2"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="rating-value">4.9</span><span class="rating-count">(512)</span></div>
+            <div class="flex items-center gap-3"><span class="text-caption"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 10-15 min</span><span class="text-caption"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> N150</span></div>
+            <div class="flex gap-2 mt-3"><span class="chip" style="padding:4px 10px;font-size:12px;">Pizza</span><span class="chip" style="padding:4px 10px;font-size:12px;">Italian</span></div>
+          </div></div>
+          <div class="card"><div class="placeholder-img">Food photo</div><div class="card-body">
+            <span class="badge badge-promo mb-2">Free Delivery</span><h3 class="card-title">Shake Factory</h3>
+            <div class="rating-row mt-1 mb-2"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="rating-value">4.3</span><span class="rating-count">(98)</span></div>
+            <div class="flex items-center gap-3"><span class="text-caption"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 5-10 min</span><span class="text-caption"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Free</span></div>
+            <div class="flex gap-2 mt-3"><span class="chip" style="padding:4px 10px;font-size:12px;">Shakes</span><span class="chip" style="padding:4px 10px;font-size:12px;">Drinks</span></div>
+          </div></div>
+          <div class="card"><div class="placeholder-img">Food photo</div><div class="card-body">
+            <span class="badge badge-new mb-2">New</span><h3 class="card-title">Suya Republic</h3>
+            <div class="rating-row mt-1 mb-2"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="rating-value">4.6</span><span class="rating-count">(72)</span></div>
+            <div class="flex items-center gap-3"><span class="text-caption"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 15-25 min</span><span class="text-caption"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> N200</span></div>
+            <div class="flex gap-2 mt-3"><span class="chip" style="padding:4px 10px;font-size:12px;">African</span><span class="chip" style="padding:4px 10px;font-size:12px;">Grills</span></div>
+          </div></div>
+          <div class="card"><div class="placeholder-img">Food photo</div><div class="card-body">
+            <h3 class="card-title">Green Bowl</h3>
+            <div class="rating-row mt-1 mb-2"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="rating-value">4.7</span><span class="rating-count">(156)</span></div>
+            <div class="flex items-center gap-3"><span class="text-caption"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 10-20 min</span><span class="text-caption"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> N150</span></div>
+            <div class="flex gap-2 mt-3"><span class="chip" style="padding:4px 10px;font-size:12px;">Healthy</span><span class="chip" style="padding:4px 10px;font-size:12px;">Salads</span></div>
+          </div></div>
+        </div>
+        <div class="text-center mt-8"><button class="btn btn-outlined">Load More</button></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer"><div class="container container-wide"><div class="footer-bottom" style="margin-top:0;padding-top:0;border-top:none;"><span>&copy; 2026 Orderly.</span><div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a></div></div></div></footer>
+
+  <nav class="bottomnav"><div class="bottomnav-inner">
+    <a href="homepage.html" class="bottomnav-item" style="text-decoration:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home</a>
+    <div class="bottomnav-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Explore</div>
+    <div class="bottomnav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Cart</div>
+    <div class="bottomnav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>Orders</div>
+    <div class="bottomnav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Account</div>
+  </div></nav>
+</body>
+</html>

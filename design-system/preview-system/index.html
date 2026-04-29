@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orderly — Preview System</title>
+  <meta name="description" content="Interactive preview hub for the Orderly design system. Browse all page mockups at desktop, tablet, and mobile viewports.">
+  <link rel="stylesheet" href="preview.css">
+</head>
+<body>
+
+  <!-- Mobile sidebar overlay -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="preview-shell">
+
+    <!-- ============================================================
+         SIDEBAR
+         ============================================================ -->
+    <aside class="preview-sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="sidebar-logo">orderly</div>
+        <span class="sidebar-label">Preview System</span>
+      </div>
+
+      <span class="sidebar-section-title">Overview</span>
+      <nav class="sidebar-nav">
+        <a href="#" class="sidebar-link active" data-page="welcome" id="nav-welcome">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          Dashboard
+        </a>
+        <a href="#" class="sidebar-link" data-page="all-pages" id="nav-all-pages">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          All Pages
+        </a>
+      </nav>
+
+      <span class="sidebar-section-title">Pages</span>
+      <nav class="sidebar-nav" id="pageNav">
+        <a href="#" class="sidebar-link" data-page="../homepage.html" data-label="Homepage">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          Homepage
+        </a>
+        <a href="#" class="sidebar-link" data-page="../explore.html" data-label="Explore">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          Explore
+        </a>
+        <a href="#" class="sidebar-link" data-page="../vendor.html" data-label="Vendor">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+          Vendor Storefront
+        </a>
+        <a href="#" class="sidebar-link" data-page="../checkout.html" data-label="Checkout">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          Cart &amp; Checkout
+        </a>
+        <a href="#" class="sidebar-link" data-page="../tracking.html" data-label="Tracking">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          Order Tracking
+        </a>
+        <a href="#" class="sidebar-link" data-page="../auth.html" data-label="Auth">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Auth (Login/Signup)
+        </a>
+        <a href="#" class="sidebar-link" data-page="../account.html" data-label="Account">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Account
+        </a>
+      </nav>
+
+      <span class="sidebar-section-title">Reference</span>
+      <nav class="sidebar-nav">
+        <a href="#" class="sidebar-link" data-page="../index.html" data-label="Components">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          Component Library
+          <span class="sidebar-badge">ref</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <p class="sidebar-footer-text">Orderly Design System v1.0<br>Miro-inspired tokens</p>
+      </div>
+    </aside>
+
+    <!-- ============================================================
+         TOP BAR
+         ============================================================ -->
+    <header class="preview-topbar" id="topbar">
+      <span class="topbar-title" id="topbarTitle">Dashboard</span>
+
+      <div class="topbar-actions">
+        <div class="viewport-pills" id="viewportPills" style="display: none;">
+          <button class="viewport-pill active" data-viewport="desktop">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            Desktop
+          </button>
+          <button class="viewport-pill" data-viewport="tablet">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
+            Tablet
+          </button>
+          <button class="viewport-pill" data-viewport="mobile">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
+            Mobile
+          </button>
+        </div>
+
+        <a id="openInNewTab" href="#" target="_blank" class="topbar-btn topbar-btn--outline" style="display: none;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Open
+        </a>
+      </div>
+    </header>
+
+    <!-- ============================================================
+         MAIN CONTENT
+         ============================================================ -->
+    <main class="preview-main" id="mainContent">
+
+      <!-- Welcome State (default) -->
+      <div id="view-welcome">
+        <div class="welcome-grid">
+          <div class="welcome-hero">
+            <span class="welcome-hero-eyebrow">Design System</span>
+            <h1 class="welcome-hero-title">Orderly Preview System</h1>
+            <p class="welcome-hero-desc">
+              Browse every page mockup in the Orderly design system. Click any page in the sidebar to preview it at desktop, tablet, or mobile viewports.
+            </p>
+            <div>
+              <button class="topbar-btn topbar-btn--primary" onclick="showView('all-pages')">
+                Browse All Pages
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="welcome-stats">
+            <div class="stat-card">
+              <div class="stat-icon stat-icon--coral">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <div class="stat-value">7</div>
+                <div class="stat-label">Page Mockups</div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon stat-icon--teal">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+              </div>
+              <div>
+                <div class="stat-value">16</div>
+                <div class="stat-label">Component Styles</div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon stat-icon--blue">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div>
+                <div class="stat-value">5</div>
+                <div class="stat-label">Core User Flows</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- All Pages Grid -->
+      <div id="view-all-pages" style="display: none;">
+        <div class="pages-grid" id="pagesGrid"></div>
+      </div>
+
+      <!-- Iframe Viewer -->
+      <div id="view-iframe" style="display: none;">
+        <div class="iframe-viewer" id="iframeViewer">
+          <iframe id="previewFrame" src="about:blank" title="Page Preview"></iframe>
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- Mobile sidebar toggle -->
+  <button class="sidebar-toggle" id="sidebarToggle">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+
+  <script>
+    // ================================================================
+    // Preview System Controller
+    // ================================================================
+
+    const pages = [
+      { name: 'Homepage',         route: '/',              src: '../homepage.html' },
+      { name: 'Explore',          route: '/explore',       src: '../explore.html'  },
+      { name: 'Vendor Storefront', route: '/vendor/[slug]', src: '../vendor.html'   },
+      { name: 'Cart & Checkout',  route: '/checkout',      src: '../checkout.html' },
+      { name: 'Order Tracking',   route: '/order/[id]',    src: '../tracking.html' },
+      { name: 'Auth',             route: '/auth/login',    src: '../auth.html'     },
+      { name: 'Account',          route: '/account',       src: '../account.html'  },
+    ];
+
+    const sidebar       = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+    const sidebarToggle  = document.getElementById('sidebarToggle');
+    const topbarTitle    = document.getElementById('topbarTitle');
+    const viewportPills  = document.getElementById('viewportPills');
+    const openInNewTab   = document.getElementById('openInNewTab');
+    const pagesGrid      = document.getElementById('pagesGrid');
+    const previewFrame   = document.getElementById('previewFrame');
+    const iframeViewer   = document.getElementById('iframeViewer');
+
+    let currentView = 'welcome';
+    let currentSrc  = null;
+
+    // — Build page cards —
+    function buildPageCards() {
+      pagesGrid.innerHTML = pages.map((p, i) => `
+        <div class="page-card" onclick="loadPage('${p.src}', '${p.name}')" style="animation-delay: ${i * 0.06}s">
+          <div class="page-card-preview">
+            <iframe src="${p.src}" tabindex="-1" loading="lazy" title="${p.name} preview"></iframe>
+            <div class="page-card-preview-overlay"></div>
+          </div>
+          <div class="page-card-body">
+            <div class="page-card-info">
+              <span class="page-card-name">${p.name}</span>
+              <span class="page-card-route">${p.route}</span>
+            </div>
+            <div class="page-card-arrow">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // — Show a view —
+    function showView(view) {
+      document.getElementById('view-welcome').style.display   = view === 'welcome'   ? 'block' : 'none';
+      document.getElementById('view-all-pages').style.display  = view === 'all-pages' ? 'block' : 'none';
+      document.getElementById('view-iframe').style.display     = view === 'iframe'    ? 'flex'  : 'none';
+
+      viewportPills.style.display  = view === 'iframe' ? 'flex' : 'none';
+      openInNewTab.style.display   = view === 'iframe' ? 'inline-flex' : 'none';
+
+      currentView = view;
+
+      // Sidebar active state
+      document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+
+      if (view === 'welcome') {
+        topbarTitle.textContent = 'Dashboard';
+        document.getElementById('nav-welcome').classList.add('active');
+      } else if (view === 'all-pages') {
+        topbarTitle.textContent = 'All Pages';
+        document.getElementById('nav-all-pages').classList.add('active');
+        if (!pagesGrid.children.length) buildPageCards();
+      }
+
+      closeSidebar();
+    }
+
+    // — Load an individual page —
+    function loadPage(src, label) {
+      currentSrc = src;
+      previewFrame.src = src;
+      openInNewTab.href = src;
+      topbarTitle.textContent = label;
+
+      showView('iframe');
+
+      // Activate correct sidebar link
+      document.querySelectorAll('.sidebar-link').forEach(l => {
+        l.classList.remove('active');
+        if (l.dataset.page === src) l.classList.add('active');
+      });
+
+      // Reset viewport to desktop
+      setViewport('desktop');
+    }
+
+    // — Viewport switcher —
+    function setViewport(mode) {
+      iframeViewer.className = 'iframe-viewer';
+      if (mode === 'tablet') iframeViewer.classList.add('iframe-viewer--tablet');
+      if (mode === 'mobile') iframeViewer.classList.add('iframe-viewer--mobile');
+
+      document.querySelectorAll('.viewport-pill').forEach(p => {
+        p.classList.toggle('active', p.dataset.viewport === mode);
+      });
+    }
+
+    // — Sidebar mobile controls —
+    function closeSidebar() {
+      sidebar.classList.remove('open');
+      sidebarOverlay.classList.remove('open');
+    }
+
+    sidebarToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      sidebarOverlay.classList.toggle('open');
+    });
+
+    sidebarOverlay.addEventListener('click', closeSidebar);
+
+    // — Event delegation —
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('.sidebar-link');
+      if (!link) return;
+      e.preventDefault();
+
+      const page = link.dataset.page;
+
+      if (page === 'welcome' || page === 'all-pages') {
+        showView(page);
+      } else if (page) {
+        const label = link.dataset.label || link.textContent.trim();
+        loadPage(page, label);
+      }
+    });
+
+    document.querySelectorAll('.viewport-pill').forEach(pill => {
+      pill.addEventListener('click', () => setViewport(pill.dataset.viewport));
+    });
+
+    // — Keyboard shortcuts —
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && currentView === 'iframe') showView('all-pages');
+      if (e.key === '1' && e.ctrlKey) setViewport('desktop');
+      if (e.key === '2' && e.ctrlKey) setViewport('tablet');
+      if (e.key === '3' && e.ctrlKey) setViewport('mobile');
+    });
+
+    // Init
+    showView('welcome');
+  </script>
+
+</body>
+</html>

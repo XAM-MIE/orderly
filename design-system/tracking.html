@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orderly — Order Tracking</title>
+  <meta name="description" content="Track your order in real time.">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .tracking-layout { max-width: 720px; margin: 0 auto; padding: var(--space-9) var(--space-6); }
+    .eta-display { font-family: var(--font-display); font-size: 48px; font-weight: 600; letter-spacing: -1.44px; color: var(--color-near-black); margin-bottom: var(--space-2); }
+    .eta-sub { font-family: var(--font-body); font-size: 16px; color: var(--color-slate); margin-bottom: var(--space-8); }
+    .tracking-section { margin-bottom: var(--space-8); }
+    .tracking-section-title { font-family: var(--font-display); font-size: 18px; font-weight: 600; margin-bottom: var(--space-4); color: var(--color-near-black); }
+    .contact-row { display: flex; gap: var(--space-3); }
+    .order-item-row { display: flex; align-items: center; justify-content: space-between; padding: var(--space-3) 0; border-bottom: 1px solid var(--color-input-border); }
+    .order-item-row:last-child { border-bottom: none; }
+    .order-item-name { font-family: var(--font-display); font-size: 15px; font-weight: 500; }
+    .order-item-qty { font-family: var(--font-body); font-size: 13px; color: var(--color-slate); }
+    .order-item-price { font-family: var(--font-display); font-size: 15px; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <nav class="topnav">
+    <a href="homepage.html" class="topnav-logo">orderly</a>
+    <div class="topnav-right"><div class="avatar">AZ</div></div>
+  </nav>
+
+  <div class="tracking-layout animate-fade-up">
+    <p class="text-eyebrow mb-4">Order #ORD-7842</p>
+    <h1 class="eta-display">Arriving in ~12 min</h1>
+    <p class="eta-sub">Your order from Campus Grill is on its way</p>
+
+    <!-- STEPPER -->
+    <div class="tracking-section">
+      <div class="stepper" style="max-width:100%;">
+        <div class="stepper-step completed"><div class="stepper-dot"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span class="stepper-label">Confirmed</span></div>
+        <div class="stepper-line completed"></div>
+        <div class="stepper-step completed"><div class="stepper-dot"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span class="stepper-label">Preparing</span></div>
+        <div class="stepper-line"></div>
+        <div class="stepper-step active"><div class="stepper-dot">3</div><span class="stepper-label">On the Way</span></div>
+        <div class="stepper-line"></div>
+        <div class="stepper-step"><div class="stepper-dot">4</div><span class="stepper-label">Delivered</span></div>
+      </div>
+    </div>
+
+    <!-- MAP -->
+    <div class="tracking-section">
+      <div class="map-placeholder">
+        <div style="text-align:center;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin:0 auto 8px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Live Map</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="tracking-section">
+      <h3 class="tracking-section-title">Contact</h3>
+      <div class="contact-row">
+        <button class="btn btn-outlined btn-sm">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Call Vendor
+        </button>
+        <button class="btn btn-outlined btn-sm">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Call Rider
+        </button>
+      </div>
+    </div>
+
+    <!-- ORDER SUMMARY -->
+    <div class="tracking-section">
+      <h3 class="tracking-section-title">Order Summary</h3>
+      <div style="background:var(--color-white);border-radius:var(--radius-md);box-shadow:var(--shadow-ring);padding:var(--space-5);">
+        <div class="order-item-row"><div><span class="order-item-name">Smoky BBQ Burger</span><span class="order-item-qty"> x1</span></div><span class="order-item-price">N2,800</span></div>
+        <div class="order-item-row"><div><span class="order-item-name">Loaded Fries</span><span class="order-item-qty"> x1</span></div><span class="order-item-price">N1,200</span></div>
+        <div class="divider" style="margin:12px 0;"></div>
+        <div class="order-item-row" style="border:none;"><span style="color:var(--color-slate);font-size:14px;">Subtotal</span><span class="order-item-price">N4,000</span></div>
+        <div class="order-item-row" style="border:none;"><span style="color:var(--color-slate);font-size:14px;">Delivery</span><span class="order-item-price">N200</span></div>
+        <div class="order-item-row" style="border:none;font-size:18px;"><span style="font-weight:600;">Total</span><span style="font-family:var(--font-display);font-weight:700;">N4,200</span></div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:var(--space-4);">
+      <a href="#" style="color:var(--color-coral-dark);font-size:14px;font-weight:500;">Cancel Order</a>
+    </div>
+  </div>
+
+  <nav class="bottomnav"><div class="bottomnav-inner">
+    <a href="homepage.html" class="bottomnav-item" style="text-decoration:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home</a>
+    <div class="bottomnav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Explore</div>
+    <div class="bottomnav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Cart</div>
+    <div class="bottomnav-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>Orders</div>
+    <div class="bottomnav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Account</div>
+  </div></nav>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orderly — Campus Grill</title>
+  <meta name="description" content="Order from Campus Grill — burgers, grills, and sides.">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .vendor-hero { position: relative; border-radius: var(--radius-lg); overflow: hidden; margin-top: var(--space-6); }
+    .vendor-hero-img { width: 100%; aspect-ratio: 3 / 1; background: linear-gradient(135deg, var(--color-surface-soft), var(--color-input-border)); display: flex; align-items: center; justify-content: center; color: var(--color-placeholder); font-family: var(--font-display); font-size: 18px; }
+    .vendor-info-bar { display: flex; align-items: center; gap: var(--space-6); padding: var(--space-5) 0; border-bottom: 1px solid var(--color-input-border); flex-wrap: wrap; }
+    .vendor-info-item { display: flex; align-items: center; gap: 6px; font-family: var(--font-body); font-size: 14px; color: var(--color-slate); }
+    .vendor-info-item svg { width: 15px; height: 15px; flex-shrink: 0; }
+    .vendor-layout { display: grid; grid-template-columns: 1fr 340px; gap: var(--space-7); padding: var(--space-6) 0 var(--space-11); align-items: start; }
+    .menu-nav { display: flex; gap: var(--space-3); padding: var(--space-3) 0; border-bottom: 1px solid var(--color-input-border); position: sticky; top: 72px; background: var(--color-white); z-index: 10; overflow-x: auto; scrollbar-width: none; }
+    .menu-nav::-webkit-scrollbar { display: none; }
+    .menu-section { padding-top: var(--space-6); }
+    .menu-section-title { font-family: var(--font-display); font-size: 24px; font-weight: 500; letter-spacing: -0.72px; margin-bottom: var(--space-4); }
+    .menu-item { display: flex; gap: var(--space-4); padding: var(--space-4) 0; border-bottom: 1px solid var(--color-input-border); align-items: center; }
+    .menu-item:last-child { border-bottom: none; }
+    .menu-item-img { width: 80px; height: 80px; border-radius: var(--radius-sm); background: linear-gradient(135deg, var(--color-surface-soft), var(--color-input-border)); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--color-placeholder); }
+    .menu-item-info { flex: 1; }
+    .menu-item-name { font-family: var(--font-display); font-size: 16px; font-weight: 600; color: var(--color-near-black); margin-bottom: 2px; }
+    .menu-item-desc { font-family: var(--font-body); font-size: 13px; color: var(--color-slate); line-height: 1.4; margin-bottom: 6px; }
+    .menu-item-price { font-family: var(--font-display); font-size: 15px; font-weight: 700; color: var(--color-near-black); }
+    .cart-sidebar { position: sticky; top: 88px; border-radius: var(--radius-lg); box-shadow: var(--shadow-ring); padding: var(--space-5); background: var(--color-white); }
+    .cart-sidebar-title { font-family: var(--font-display); font-size: 18px; font-weight: 600; margin-bottom: var(--space-4); padding-bottom: var(--space-3); border-bottom: 1px solid var(--color-input-border); }
+    .cart-item { display: flex; align-items: center; justify-content: space-between; padding: var(--space-3) 0; border-bottom: 1px solid var(--color-input-border); }
+    .cart-item:last-of-type { border-bottom: none; }
+    .cart-item-name { font-family: var(--font-display); font-size: 14px; font-weight: 500; }
+    .cart-item-meta { font-family: var(--font-body); font-size: 12px; color: var(--color-slate); }
+    .cart-item-price { font-family: var(--font-display); font-size: 14px; font-weight: 600; }
+    .cart-summary-row { display: flex; justify-content: space-between; padding: var(--space-2) 0; font-family: var(--font-body); font-size: 14px; color: var(--color-slate); }
+    .cart-summary-row.total { font-family: var(--font-display); font-size: 18px; font-weight: 600; color: var(--color-near-black); border-top: 1px solid var(--color-input-border); padding-top: var(--space-3); margin-top: var(--space-2); }
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; z-index: 200; padding: var(--space-6); }
+    .modal-content { background: var(--color-white); border-radius: var(--radius-xl); max-width: 480px; width: 100%; max-height: 90vh; overflow-y: auto; box-shadow: var(--shadow-float); position: relative; }
+    .modal-image { width: 100%; aspect-ratio: 16 / 10; background: linear-gradient(135deg, var(--color-surface-soft), var(--color-input-border)); border-radius: var(--radius-xl) var(--radius-xl) 0 0; display: flex; align-items: center; justify-content: center; color: var(--color-placeholder); }
+    .modal-body { padding: var(--space-6); }
+    .modal-close { position: absolute; top: var(--space-4); right: var(--space-4); width: 36px; height: 36px; border-radius: var(--radius-circle); background: var(--color-white); box-shadow: var(--shadow-card); display: flex; align-items: center; justify-content: center; border: none; cursor: pointer; }
+    .option-group { margin-bottom: var(--space-5); }
+    .option-group-title { font-family: var(--font-display); font-size: 15px; font-weight: 600; margin-bottom: var(--space-3); }
+    @media (max-width: 1024px) { .vendor-layout { grid-template-columns: 1fr; } .cart-sidebar { display: none; } }
+    @media (max-width: 768px) { .vendor-hero-img { aspect-ratio: 16 / 9; } }
+  </style>
+</head>
+<body>
+  <nav class="topnav">
+    <a href="homepage.html" class="topnav-logo">orderly</a>
+    <div class="topnav-center"><input type="text" class="input input-search" placeholder="Search this menu..." style="height:42px;font-size:14px;"></div>
+    <div class="topnav-right"><div class="topnav-cart"><button class="btn-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></button><span class="cart-count">2</span></div><div class="avatar">AZ</div></div>
+  </nav>
+  <div class="container container-wide">
+    <div class="vendor-hero animate-fade-up"><div class="vendor-hero-img">Vendor cover photo</div></div>
+    <div style="padding:var(--space-6) 0 0;">
+      <div class="flex items-center gap-3 mb-2"><h1 class="display-section" style="font-size:36px;">Campus Grill</h1><span class="badge badge-promo">30% OFF</span></div>
+      <div class="rating-row mb-3"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="rating-value">4.8</span><span class="rating-count">(245 reviews)</span></div>
+      <div class="flex gap-2 mb-3"><span class="chip" style="padding:4px 10px;font-size:12px;">Burgers</span><span class="chip" style="padding:4px 10px;font-size:12px;">Grills</span><span class="chip" style="padding:4px 10px;font-size:12px;">Sides</span></div>
+    </div>
+    <div class="vendor-info-bar">
+      <span class="vendor-info-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Open now &middot; Closes 10:00 PM</span>
+      <span class="vendor-info-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> 1.2 km away</span>
+      <span class="vendor-info-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> N200 &middot; 15-20 min</span>
+      <span class="vendor-info-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg> Min. N1,000</span>
+      <div class="tabs" style="border-bottom:none;margin-left:auto;"><span class="tab active">Menu</span><span class="tab">Info</span><span class="tab">Reviews</span></div>
+    </div>
+    <div class="vendor-layout">
+      <div>
+        <div class="menu-nav">
+          <span class="chip active" style="padding:6px 14px;font-size:13px;">Burgers</span>
+          <span class="chip" style="padding:6px 14px;font-size:13px;">Sides</span>
+          <span class="chip" style="padding:6px 14px;font-size:13px;">Drinks</span>
+          <span class="chip" style="padding:6px 14px;font-size:13px;">Combos</span>
+          <span class="chip" style="padding:6px 14px;font-size:13px;">Desserts</span>
+        </div>
+        <div class="menu-section"><h2 class="menu-section-title">Burgers</h2>
+          <div class="menu-item"><div class="menu-item-img">Photo</div><div class="menu-item-info"><p class="menu-item-name">Smoky BBQ Burger</p><p class="menu-item-desc">Double patty, smoked cheese, caramelized onions, BBQ sauce</p><p class="menu-item-price">N2,500</p></div><button class="btn btn-primary btn-sm">Add</button></div>
+          <div class="menu-item"><div class="menu-item-img">Photo</div><div class="menu-item-info"><p class="menu-item-name">Classic Cheeseburger</p><p class="menu-item-desc">Single patty, American cheese, lettuce, tomato, pickles</p><p class="menu-item-price">N1,800</p></div><button class="btn btn-primary btn-sm">Add</button></div>
+          <div class="menu-item"><div class="menu-item-img">Photo</div><div class="menu-item-info"><p class="menu-item-name">Spicy Jalapeno Burger</p><p class="menu-item-desc">Pepper jack cheese, jalapenos, chipotle mayo, crispy onions</p><p class="menu-item-price">N2,200</p></div><button class="btn btn-primary btn-sm">Add</button></div>
+          <div class="menu-item"><div class="menu-item-img">Photo</div><div class="menu-item-info"><p class="menu-item-name">Veggie Deluxe</p><p class="menu-item-desc">Grilled portobello, avocado, Swiss cheese, herb aioli</p><p class="menu-item-price">N2,000</p></div><button class="btn btn-primary btn-sm">Add</button></div>
+        </div>
+        <div class="menu-section"><h2 class="menu-section-title">Sides</h2>
+          <div class="menu-item"><div class="menu-item-img">Photo</div><div class="menu-item-info"><p class="menu-item-name">Loaded Fries</p><p class="menu-item-desc">Crispy fries, cheese sauce, bacon bits, spring onion</p><p class="menu-item-price">N1,200</p></div><button class="btn btn-primary btn-sm">Add</button></div>
+          <div class="menu-item"><div class="menu-item-img">Photo</div><div class="menu-item-info"><p class="menu-item-name">Onion Rings</p><p class="menu-item-desc">Beer-battered, served with ranch dip</p><p class="menu-item-price">N800</p></div><button class="btn btn-primary btn-sm">Add</button></div>
+          <div class="menu-item"><div class="menu-item-img">Photo</div><div class="menu-item-info"><p class="menu-item-name">Coleslaw</p><p class="menu-item-desc">Fresh cabbage and carrot slaw with creamy dressing</p><p class="menu-item-price">N500</p></div><button class="btn btn-primary btn-sm">Add</button></div>
+        </div>
+        <div class="menu-section"><h2 class="menu-section-title">Drinks</h2>
+          <div class="menu-item"><div class="menu-item-img">Photo</div><div class="menu-item-info"><p class="menu-item-name">Fresh Juice (Orange / Pineapple)</p><p class="menu-item-desc">Freshly squeezed, no added sugar</p><p class="menu-item-price">N600</p></div><button class="btn btn-primary btn-sm">Add</button></div>
+          <div class="menu-item"><div class="menu-item-img">Photo</div><div class="menu-item-info"><p class="menu-item-name">Chapman</p><p class="menu-item-desc">Classic Nigerian cocktail, non-alcoholic</p><p class="menu-item-price">N800</p></div><button class="btn btn-primary btn-sm">Add</button></div>
+        </div>
+      </div>
+      <div class="cart-sidebar">
+        <h3 class="cart-sidebar-title">Your Order</h3>
+        <div class="cart-item"><div><div class="flex items-center gap-2"><div class="qty" style="transform:scale(0.85);transform-origin:left;"><button class="qty-btn">&minus;</button><span class="qty-value">1</span><button class="qty-btn">+</button></div><p class="cart-item-name">Smoky BBQ Burger</p></div><p class="cart-item-meta" style="margin-left:4px;margin-top:2px;">Large, Extra cheese</p></div><span class="cart-item-price">N2,800</span></div>
+        <div class="cart-item"><div><div class="flex items-center gap-2"><div class="qty" style="transform:scale(0.85);transform-origin:left;"><button class="qty-btn">&minus;</button><span class="qty-value">1</span><button class="qty-btn">+</button></div><p class="cart-item-name">Loaded Fries</p></div></div><span class="cart-item-price">N1,200</span></div>
+        <div style="margin-top:var(--space-4);">
+          <div class="cart-summary-row"><span>Subtotal</span><span>N4,000</span></div>
+          <div class="cart-summary-row"><span>Delivery Fee</span><span>N200</span></div>
+          <div class="cart-summary-row total"><span>Total</span><span>N4,200</span></div>
+        </div>
+        <button class="btn btn-primary btn-full mt-4">Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ITEM MODAL -->
+  <div class="modal-overlay" id="itemModal" style="display:none;">
+    <div class="modal-content">
+      <button class="modal-close" onclick="document.getElementById('itemModal').style.display='none'"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+      <div class="modal-image">Item photo</div>
+      <div class="modal-body">
+        <h2 class="heading-card mb-2">Smoky BBQ Burger</h2>
+        <p class="text-body-standard mb-5" style="color:var(--color-slate);">Double beef patty, smoked cheddar, caramelized onions, house BBQ sauce on a toasted brioche bun.</p>
+        <div class="option-group"><p class="option-group-title">Size</p><div class="flex gap-2"><span class="chip">Small</span><span class="chip active">Medium</span><span class="chip">Large (+N300)</span></div></div>
+        <div class="option-group"><p class="option-group-title">Extras</p>
+          <label class="filter-option mb-2"><div class="filter-checkbox checked"></div>Extra cheese (+N200)</label>
+          <label class="filter-option mb-2"><div class="filter-checkbox"></div>Bacon (+N300)</label>
+          <label class="filter-option"><div class="filter-checkbox"></div>Avocado (+N250)</label>
+        </div>
+        <div class="option-group"><p class="option-group-title">Spice Level</p><div class="flex gap-2"><span class="chip">Mild</span><span class="chip active">Medium</span><span class="chip">Hot</span></div></div>
+        <div class="option-group"><p class="option-group-title">Special Instructions</p><textarea class="input" placeholder="Any special requests?" style="min-height:70px;"></textarea></div>
+        <div class="flex items-center justify-between mt-5"><div class="qty"><button class="qty-btn">&minus;</button><span class="qty-value">1</span><button class="qty-btn">+</button></div><button class="btn btn-primary" style="min-width:180px;">Add to Cart &mdash; N2,700</button></div>
+      </div>
+    </div>
+  </div>
+  <div style="position:fixed;bottom:24px;right:24px;z-index:50;"><button class="btn btn-primary" onclick="document.getElementById('itemModal').style.display='flex'" style="box-shadow:var(--shadow-float);">Show Item Modal</button></div>
+
+  <nav class="bottomnav"><div class="bottomnav-inner">
+    <a href="homepage.html" class="bottomnav-item" style="text-decoration:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home</a>
+    <a href="explore.html" class="bottomnav-item" style="text-decoration:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Explore</a>
+    <div class="bottomnav-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Cart</div>
+    <div class="bottomnav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>Orders</div>
+    <div class="bottomnav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Account</div>
+  </div></nav>
+</body>
+</html>

@@ -1,0 +1,74 @@
+/* ============================================================
+   ORDERLY — Navigation Components
+   Topnav, Bottom Nav, Avatar, Location Pill
+   ============================================================ */
+
+.topnav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 var(--space-8); height: 72px;
+  background-color: var(--color-white); box-shadow: var(--shadow-ring);
+  position: sticky; top: 0; z-index: 100;
+}
+.topnav-logo {
+  font-family: var(--font-display); font-size: 26px; font-weight: 700;
+  color: var(--color-near-black); letter-spacing: -0.78px;
+  text-decoration: none;
+}
+a.topnav-logo { text-decoration: none; color: var(--color-near-black); }
+.topnav-center { display: flex; align-items: center; gap: var(--space-4); flex: 1; max-width: 560px; margin: 0 var(--space-8); }
+.topnav-right { display: flex; align-items: center; gap: var(--space-4); }
+.topnav-cart { position: relative; }
+.topnav-cart .cart-count {
+  position: absolute; top: -4px; right: -4px; width: 20px; height: 20px;
+  border-radius: var(--radius-circle); background-color: var(--color-blue-450);
+  color: var(--color-white); font-family: var(--font-display); font-size: 11px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.avatar {
+  width: 40px; height: 40px; border-radius: var(--radius-circle);
+  background-color: var(--color-blue-450); color: var(--color-white);
+  font-family: var(--font-display); font-size: 14px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.location-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 14px; border-radius: var(--radius-pill);
+  background-color: var(--color-surface-soft);
+  font-family: var(--font-display); font-size: 14px; font-weight: 500;
+  color: var(--color-near-black); cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-smooth);
+}
+.location-pill:hover { background-color: var(--color-input-border); color: var(--color-near-black); }
+
+/* — Bottom Nav (mobile) — */
+.bottomnav {
+  display: none; position: fixed; bottom: 0; left: 0; right: 0;
+  height: 64px; background-color: var(--color-white);
+  box-shadow: 0 -1px 0 var(--color-ring); z-index: 100; padding: 0 var(--space-4);
+}
+.bottomnav-inner { display: flex; align-items: center; justify-content: space-around; height: 100%; }
+.bottomnav-item {
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  font-family: var(--font-display); font-size: 11px; font-weight: 500;
+  color: var(--color-slate); cursor: pointer; padding: 4px; text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-smooth);
+}
+.bottomnav-item:hover, .bottomnav-item.active { color: var(--color-blue-450); }
+.bottomnav-item svg { width: 24px; height: 24px; }
+
+/* — Footer — */
+.footer { background-color: var(--color-white); border-top: 1px solid var(--color-input-border); padding: var(--space-11) 0 var(--space-7); }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: var(--space-8); }
+.footer-brand-text { font-family: var(--font-body); font-size: 15px; color: var(--color-slate); line-height: 1.6; max-width: 300px; margin-top: var(--space-3); }
+.footer-col-title { font-family: var(--font-display); font-size: 14px; font-weight: 600; color: var(--color-near-black); margin-bottom: var(--space-4); text-transform: uppercase; letter-spacing: 0.6px; }
+.footer-links { display: flex; flex-direction: column; gap: var(--space-3); }
+.footer-links a { font-family: var(--font-body); font-size: 14px; color: var(--color-slate); }
+.footer-links a:hover { color: var(--color-blue-450); }
+.footer-bottom {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: var(--space-8); padding-top: var(--space-6);
+  border-top: 1px solid var(--color-input-border);
+  font-family: var(--font-body); font-size: 13px; color: var(--color-slate);
+}
+.footer-bottom-links { display: flex; gap: var(--space-5); }
+.footer-bottom-links a { font-size: 13px; color: var(--color-slate); }
